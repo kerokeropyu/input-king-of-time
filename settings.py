@@ -12,3 +12,5 @@ URL =  'ご自身のking-of-timeのURL'
 BEGIN_TIME = '0900'
 # 退勤時間
 FINISH_TIME = '1800'
+# 土日祝を除く
+EXCEPT_HOLIDAY = True

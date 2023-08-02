@@ -83,7 +83,6 @@ def main(page: ft.Page):
             alignment=ft.alignment.top_right,
             border_radius=10,
         ),
-        # ft.label(),
         ft.Container(
             ft.ElevatedButton(
                 content=ft.Container(
@@ -104,10 +103,10 @@ def main(page: ft.Page):
                     },
                     shape=ft.StadiumBorder(),
                 ),
-                # bgcolor=ft.colors.DEEP_PURPLE,
             ),
             alignment=ft.alignment.top_right,
             border_radius=10,
+            on_click=test
         ),
     )
 

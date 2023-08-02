@@ -9,6 +9,7 @@ import datetime
 import time
 import calendar
 import settings
+import jpholiday
 
 # 現在の年と月を取得
 today = datetime.datetime.now()
@@ -35,6 +36,14 @@ def input_work_data():
     # 打刻登録
     driver.find_element(By.XPATH, '//*[@id="button_01"]').click()
 
+# 土日かどうか判定
+def is_weekend(dt):
+    return dt.weekday() in [5, 6]
+
+# 祝日かどうか判定
+def is_japanese_holiday(dt):
+    return jpholiday.is_holiday(datetime.date(year, month, dt))
+
 try:
     # 勤怠アプリにアクセス
     driver.get(settings.URL)
@@ -47,8 +56,15 @@ try:
     driver.find_element(By.XPATH, '//*[@id="login_password"]').send_keys(settings.PASSWORD)
     driver.find_element(By.XPATH, '//*[@id="login_button"]').click()
 
+    # 「土日・祝日を除く」設定を取得
+    except_holiday = settings.EXCEPT_HOLIDAY
+
     # 月初から月末までの勤務データを入力
     for i in range(1, num_days + 1):
+        # 「土日祝も除く」設定がTrueの場合、かつ、土日または祝日の場合、forを飛ばす
+        date = datetime.date(year, month, i)
+        if (except_holiday == True) and (is_weekend(date) or is_japanese_holiday(i)):
+            continue
         # トップページから編集画面へ遷移
         Select(driver.find_element(By.XPATH, f'/html/body/div/div[2]/div/div[5]/div[1]/table/tbody/tr[{i}]/td[1]/p/select')).select_by_index(1)
         # 勤怠データ入力
