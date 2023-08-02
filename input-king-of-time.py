@@ -19,8 +19,8 @@ month = today.month
 num_days = calendar.monthrange(year, month)[1]
 
 # 実行時のバージョンと同様の ChromeDriverをインストール
-driver = webdriver.Chrome(ChromeDriverManager().install())
-
+# driver = webdriver.Chrome(ChromeDriverManager().install())
+driver = webdriver.Chrome()
 # 指定した要素が見つかるまでの待ち時間を設定（1秒）
 driver.implicitly_wait(1)
 
