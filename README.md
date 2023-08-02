@@ -39,7 +39,7 @@
     | EXCEPT_HOLIDAY | 土日祝を除くかどうか（True: 土日祝を除く、False: 土日祝を除かない） |
 
 ## 実行手順
-* Windowsの場合
+* #### Windowsの場合
   
     - 下記のいずれかの手順で実行
       - ~~dist配下の「InputKingOfTime_ver1-0-0.exe」をダブルクリックで実行。~~（こちらメンテナンスしていません。少々お待ちください。）
@@ -48,7 +48,7 @@
         ```コマンドプロンプト
         python input-king-of-time.py
         ```
-* ~~Macの場合~~（Macで動作しないことを確認済み。）
+* #### ~~Macの場合~~（Macで動作しないことを確認済み。）
     - ~~下記の手順で実行~~
         - ~~input-king-of-time配下でpythonファイル（input-king-of-time.py）を実行。
             以下のコマンドで実行できます。~~
