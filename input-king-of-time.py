@@ -1,6 +1,7 @@
 # coding: utf-8
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome import service as fs
@@ -20,8 +21,7 @@ month = today.month
 num_days = calendar.monthrange(year, month)[1]
 
 # 実行時のバージョンと同様の ChromeDriverをインストール
-# driver = webdriver.Chrome(ChromeDriverManager().install())
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 # 指定した要素が見つかるまでの待ち時間を設定（1秒）
 driver.implicitly_wait(1)
 
