@@ -37,11 +37,11 @@ def input_work_data():
     driver.find_element(By.XPATH, '//*[@id="button_01"]').click()
 
 # 土日かどうか判定
-def is_weekend(dt: datetime.date):
+def is_weekend(dt: datetime.date) -> bool:
     return dt.weekday() in [5, 6]
 
 # 祝日かどうか判定
-def is_japanese_holiday(dt: int):
+def is_japanese_holiday(dt: int) -> bool:
     return jpholiday.is_holiday(datetime.date(year, month, dt))
 
 try:
