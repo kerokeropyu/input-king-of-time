@@ -31,34 +31,30 @@ class Setting(UserControl):
             self.except_holidays = except_holidays
             self.id = id
             self.password = password
-    def save_clicked(self, e):
-        config = configparser.ConfigParser()
-        config.read('../settings.ini')
-        settings = config['YOUR_SETTINGS']
-        # セクション内の値の書き換え
-        settings['start_time'] = '1300'
-            # 書き込みモードでオープン
-        with open('settings.ini', 'w') as configfile:
-            # 指定したconfigファイルを書き込み
-            settings.write(configfile)
-        self.update()
+def save_clicked(self, e):
+    config = configparser.ConfigParser()
+    config.read('../settings.ini')
+    settings = config['YOUR_SETTINGS']
+    # セクション内の値の書き換え
+    settings['start_time'] = '1300'
+        # 書き込みモードでオープン
+    with open('settings.ini', 'w') as configfile:
+        # 指定したconfigファイルを書き込み
+        settings.write(configfile)
+    # self.update()
 
 class AutoInput:
     def auto_input():
         return 1
 
 def main(page: Page):
+    today= datetime.datetime.today()
+    year=str(today.year)
+    month = str(today.month)
+    
     config = configparser.ConfigParser()
     config.read('../settings.ini')
     settings = config['DEFAULT']
-    url = settings.get('url')
-    start_time = settings.get('start_time')
-    end_time = settings.get('end_time')
-    except_holidays = settings.getboolean('exclude_holidays', False)
-    input_last_month = settings.getboolean('input_last_month', False)
-    id = settings.get('id')
-    password = settings.get('password')
-
 
     page.title = "Auto Input King-Of-Time"
     # page.bgcolor = colors.SECONDARY
@@ -77,6 +73,7 @@ def main(page: Page):
             ),
         ],
     )
+    # view=
     page.add(
         # 今日の日付ラベル
         ft.Container(
@@ -93,17 +90,17 @@ def main(page: Page):
                         icon_color="blue400",
                         icon_size=30,
                         tooltip="設定内容を保存します。",
-                        on_click=test,
+                        on_click=save_clicked,
                     ),
                     alignment=ft.alignment.top_left,
                 ),
             ]
         ),
         # 入力対象月
-        ft.TextField(label="入力対象月",  disabled=True, keyboard_type="TEXT", value="year"+' / '+"month"),
+        ft.TextField(label="入力対象月",  disabled=True, keyboard_type="TEXT", value=year+'/'+month),
         # 前月分を入力するチェックボックス
         ft.Container(
-            content=ft.Checkbox(value=True, label="前月分を入力する"),
+            content=ft.Checkbox(value=settings.get('input_last_month'), label="前月分を入力する"),
             alignment=ft.alignment.top_right,
             border_radius=10,
             on_click=test
@@ -111,21 +108,21 @@ def main(page: Page):
         # 出勤時間、退勤時間テキストボックス
         ft.ResponsiveRow(
             [
-                ft.TextField(label="出勤時間", keyboard_type="NUMBER", max_length=4, hint_text="0900", value=start_time, col={"md": 6}),
-                ft.TextField(label="退勤時間", keyboard_type="NUMBER", max_length=4, hint_text="1800", value=end_time, col={"md": 6}),
+                ft.TextField(label="出勤時間", keyboard_type="NUMBER", max_length=4, hint_text="0900", value=settings.get('start_time'), col={"md": 6}),
+                ft.TextField(label="退勤時間", keyboard_type="NUMBER", max_length=4, hint_text="1800", value=settings.get('end_time'), col={"md": 6}),
             ],
             run_spacing={"xs": 10},
         ),
         # URLテキストボックス
         ft.TextField(label="URL", value="url"),
         # IDテキストボックス
-        ft.TextField(label="ID", keyboard_type="TEXT", value="id"),
+        ft.TextField(label="ID", keyboard_type="TEXT", value=settings.get('id')),
         # パスワードテキストボックス
-        ft.TextField(label="パスワード", keyboard_type="VISIBLE_PASSWORD", password=True, can_reveal_password=True, value="password"),
+        ft.TextField(label="パスワード", keyboard_type="VISIBLE_PASSWORD", password=True, can_reveal_password=True, value=settings.get('password')),
 
         # 土日を除くチェックボックス
         ft.Container(
-            content=ft.Checkbox(value=True, label="土日を除く"),
+            content=ft.Checkbox(value=settings.get('exclude_holidays'), label="土日を除く"),
             alignment=ft.alignment.top_right,
             border_radius=10,
         ),
