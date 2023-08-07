@@ -1,8 +1,8 @@
 # coding: utf-8
 
 # ID、パスワード
-ID = 'gckhic300135'
-PASSWORD = '7hRA!B8p9uBVcz'
+ID = 'id'
+PASSWORD = 'password'
 
 # URL
 # URL = 'https://s2.ta.kingoftime.jp/'
