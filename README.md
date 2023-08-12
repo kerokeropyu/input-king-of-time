@@ -85,8 +85,12 @@ webdriver-manager         4.0.0
     - https://yuki.world/python-selenium-chromedriver-auto-update/
     - https://yuki.world/webdriver-manager-there-is-no-such-driver-by-url/
 - fletのexe化の手順は下記サイトを参考にすること。
-    - hhttps://www.tcom242242.net/entry/uncategorized/flet-exe/
+    - https://www.tcom242242.net/entry/uncategorized/flet-exe/
     - https://flet.dev/docs/guides/python/packaging-desktop-app/
+    - 外部ファイルを参照するときは、下のコマンドで、フォルダを指定しないといけないらしい。
+    ```
+    flet pack your_program.py --add-data "assets:assets"
+    ```
 ## リリースノート
 ### 現在のバージョン
 
