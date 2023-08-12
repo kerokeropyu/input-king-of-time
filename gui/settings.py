@@ -2,7 +2,7 @@ import configparser
 
 class Setting:
     def __init__(self):
-        self.SETTINGS_INI_PATH = 'settings2.ini'
+        self.SETTINGS_INI_PATH = 'settings/settings.ini'
         self.url: str = ''
         self.start_time: str = ''
         self.end_time: str = ''

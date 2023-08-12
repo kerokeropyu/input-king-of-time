@@ -8,7 +8,7 @@ a = Analysis(
     ['auto-input-king-of-time.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('settings', 'settings')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -41,5 +41,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    version='C:\\Users\\shark\\AppData\\Local\\Temp\\4079b370-e7fa-4de1-ae57-6f4a88cb6485',
+    version='C:\\Users\\shark\\AppData\\Local\\Temp\\f3ba6dfd-85aa-4b8c-9c24-a6efc0810775',
 )
