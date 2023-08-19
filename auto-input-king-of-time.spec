@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(
-    ['auto-input-king-of-time.py'],
+    ['gui\\auto-input-king-of-time.py'],
     pathex=[],
     binaries=[],
-    datas=[('settings', 'settings')],
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -41,5 +41,4 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    version='C:\\Users\\shark\\AppData\\Local\\Temp\\b4aab756-a314-4ab4-894a-cfddd92ae281',
 )

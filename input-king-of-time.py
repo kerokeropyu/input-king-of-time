@@ -8,11 +8,14 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from webdriver_manager.chrome import ChromeDriverManager
-import settings
+from gui.settings import Setting
+
+# 設定をインスタンス化
+s = Setting()
 
 # 現在の年と月を取得（前月分を入力がTrueの場合は、前月を取得）
 today = datetime.datetime.now()
-if settings.INPUT_LAST_MONTH:
+if s.input_last_month:
     today -= relativedelta(months=1)
 year = today.year
 month = today.month 
@@ -29,10 +32,10 @@ driver.implicitly_wait(1)
 def _input_work_data():
     # 打刻種別で「出勤」を選択、出勤時間を入力
     Select(driver.find_element(By.XPATH, '//*[@id="recording_type_code_1"]')).select_by_index(1) 
-    driver.find_element(By.XPATH, '//*[@id="recording_timestamp_time_1"]').send_keys(settings.BEGIN_TIME)
+    driver.find_element(By.XPATH, '//*[@id="recording_timestamp_time_1"]').send_keys(s.start_time)
     # 打刻種別で「退勤」を選択、退勤時間を入力
     Select(driver.find_element(By.XPATH, '//*[@id="recording_type_code_2"]')).select_by_index(2) 
-    driver.find_element(By.XPATH, '//*[@id="recording_timestamp_time_2"]').send_keys(settings.FINISH_TIME)
+    driver.find_element(By.XPATH, '//*[@id="recording_timestamp_time_2"]').send_keys(s.end_time)
     # 打刻登録
     driver.find_element(By.XPATH, '//*[@id="button_01"]').click()
 
@@ -48,19 +51,19 @@ def _is_japanese_holiday(dt: int) -> bool:
 def main():
     try:
         # 勤怠アプリにアクセス
-        driver.get(settings.URL)
+        driver.get(s.url)
 
         # ID、PASSWORDを入力し、ログインボタンを押下
-        driver.find_element(By.XPATH, '//*[@id="login_id"]').send_keys(settings.ID)
-        driver.find_element(By.XPATH, '//*[@id="login_password"]').send_keys(settings.PASSWORD)
+        driver.find_element(By.XPATH, '//*[@id="login_id"]').send_keys(s.id)
+        driver.find_element(By.XPATH, '//*[@id="login_password"]').send_keys(s.password)
         driver.find_element(By.XPATH, '//*[@id="login_button"]').click()
 
         # 「前月分を入力」設定の場合、前月へ遷移
-        if settings.INPUT_LAST_MONTH == True:
+        if s.input_last_month == True:
             driver.find_element(By.XPATH, '//[@id="button_before_month"]').click()
 
         # 「土日・祝日を除く」設定を取得
-        except_holiday = settings.EXCEPT_HOLIDAY
+        except_holiday = s.except_holidays
 
         # 月初から月末までの勤務データを入力
         for i in range(1, num_days + 1):
