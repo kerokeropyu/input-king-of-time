@@ -1,59 +1,46 @@
 # king-of-time自動入力スクリプト 
- 
-## 準備
-1. #### pythonをインストール
+このスクリプトは、King of Timeという勤怠に一括で自動で勤怠情報を入力するためのツールです。CUIとGUIの両方で実行可能であり、以下にスクリプトの使い方と準備手順を説明します。
 
-    下記から最新版のpyhonをインストールください。  
-    すでにインストール済みの方は不要（バージョンはあまり古いものでない限り、おそらく実行可能）。
-    
-    https://www.python.org/
+https://www.kingoftime.jp/
+## 準備
+1. **Python のインストール**: もし未インストールの場合は、[こちら](https://www.python.org/)から最新版の Python をインストールしてください。
 
     下記が動作確認済みのpythonバージョンです。
     ```
     >> python --version
     Python 3.11.2
     ```
-2. #### pythonの仮想環境を作成し、立ち上げる
-    コマンドプロンプトで、プロジェクトフォルダ配下に移動し、
-    以下のコマンドでpythonの仮想環境を作成する。
-    ```コマンドプロンプト
+2. #### 仮想環境の作成と起動:
+    ```bash
     python -m venv venv
-    ```
-    以下のコマンドでpythonの仮想環境を立ち上げる。
-    ```コマンドプロンプト
     venv\Scripts\activate
     ```
 
-3. #### 必要なパッケージをインストールする。
-    以下のコマンドで実行に必要なパッケージをインストールする。
+3. #### 必要なパッケージをインストール:
     ```コマンドプロンプト
     pip install -r requirements.txt
     ```  
-4. #### settings.iniに設定値を入力ください。
+4. #### 設定値の入力:
+    `settings.ini` ファイルに以下の設定値を入力してください。
     | 定数名 | 値 |
     ----|---- 
     | id | ご自身のログインID |
     | password | ご自身のログインパスワード |
     | url | 変更しないでください |
-    | start_time | 自動入力したい出勤時間(0900など) |
+    | start_time | 自動入力したい出勤時間(0900など) |　
     | end_time | 自動入力したい退勤時間（1800など） |
     | except_holiday | 土日祝を除くかどうか（True: 土日祝を除く、False: 土日祝を除かない） |
-    | input_last_month | 先月分を入力するかどうか |    
+    | input_last_month | 先月分を入力するかどうか（True: 前月分を入力する、False: 今月分を入力する |    
 
 ## 実行手順
-* #### CUIで実行
-  
-    - 下記のいずれかの手順で実行
-      - dist配下の「input-king-of-time.exe」をダブルクリックで実行。
-      - input-king-of-time配下でpythonファイル（input-king-of-time.py）を実行。
-       以下のコマンドで実行できます。
-        ```コマンドプロンプト
-        python input-king-of-time.py
-        ```
-* #### GUIで実行
-    - 下記の手順で実行
-        - dist配下の「auto-input-king-of-time.exe」をダブルクリックで画面が起動する。
-        - 画面上の実行ボタンを押下することで処理が実行される。
+### CUIで実行
+1. `input-king-of-time.py` を以下のコマンドで実行:
+    ```bash
+    python input-king-of-time.py
+    ```
+### GUIで実行
+1. `auto-input-king-of-time.exe` をダブルクリックして GUI 画面を起動
+2. 画面上の実行ボタンをクリックして処理を実行
 
 ## 備考
 * ChromeDriverManagerは実行時のバージョンと同様の ChromeDriverを使用することが可能。ブラウザーのバージョンアップごとにChromeDriverを再インストールする必要がなくなる。
