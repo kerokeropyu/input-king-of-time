@@ -42,15 +42,7 @@ def main(page: ft.Page):
         input_last_month = chk_last_month.content.value
         id = id_field.value
         password = password_txt.value
-        
-        # print("URL:", url)
-        # print("Start Time:", start_time)
-        # print("End Time:", end_time)
-        # print("Except Holidays:", except_holidays)
-        # print("Input Last Month:", input_last_month)
-        # print("ID:", id)
-        # print("Password:", password)
-        
+
         # 設定情報を更新する
         s.save_settings(url, start_time, end_time, except_holidays, input_last_month, id, password)
         page.update()
@@ -74,9 +66,10 @@ def main(page: ft.Page):
     )
 
     # 入力対象月
-    target_month_month = ft.TextField(label="入力対象月",  disabled=True, keyboard_type="TEXT", value=year+' / '+month)
+    target_month_month = ft.TextField(label="入力対象月", disabled=True, keyboard_type="TEXT", value=year+' / '+month)
+
     # 先月分を入力するチェックボックス
-    chk_last_month = ft.Container(content=ft.Checkbox(value=True, label="前月分を入力する"), alignment=ft.alignment.top_right, border_radius=10)
+    chk_last_month = ft.Container(content=ft.Checkbox(value=s.input_last_month, label="前月分を入力する"), alignment=ft.alignment.top_right, border_radius=10)
 
     # 今日の日付ラベル
     today_lbl = ft.Container(content=ft.Text("今日の日付:"+str(today.date())), alignment=ft.alignment.top_right, border_radius=10)
@@ -96,7 +89,7 @@ def main(page: ft.Page):
     ], run_spacing={"xs": 10})
 
     # URLテキストボックス
-    url_field = ft.TextField(label="URL", value=s.url)
+    url_field = ft.TextField(label="URL", value=s.url, disabled=True)
 
     # IDテキストボックス
     id_field = ft.TextField(label="ID", keyboard_type="TEXT", value=s.id)
