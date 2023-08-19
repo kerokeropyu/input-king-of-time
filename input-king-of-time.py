@@ -50,9 +50,6 @@ def main():
         # 勤怠アプリにアクセス
         driver.get(settings.URL)
 
-        # トップページへ戻る
-        driver.execute_script("document.getElementsByClassName('htBlock-buttonM htBlock-buttonNormal htBlock-dialog_yes')[0].click()")
-
         # ID、PASSWORDを入力し、ログインボタンを押下
         driver.find_element(By.XPATH, '//*[@id="login_id"]').send_keys(settings.ID)
         driver.find_element(By.XPATH, '//*[@id="login_password"]').send_keys(settings.PASSWORD)

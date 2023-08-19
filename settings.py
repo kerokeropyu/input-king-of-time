@@ -5,8 +5,7 @@ ID = 'id'
 PASSWORD = 'password'
 
 # URL
-# URL = 'https://s2.ta.kingoftime.jp/'
-URL =  'https://s2.ta.kingoftime.jp/admin/2cuvJO3W3tMsyBwsDKK1W6cFWo8JlpBY?page_id=/working/monthly_individual_working_list&call_from=individual_view&date_selection_type=1&B9lH6PyT=ahR5t6eTMAgeWrLV'
+URL = 'https://s2.ta.kingoftime.jp/admin'
 
 # 出勤時間
 BEGIN_TIME = '0900'
