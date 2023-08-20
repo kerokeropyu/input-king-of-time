@@ -38,7 +38,8 @@ https://www.kingoftime.jp/
     ```bash
     python input-king-of-time.py
     ```
-### GUIで実行
+###
+ GUIで実行
 1. `auto-input-king-of-time.exe` をダブルクリックして GUI 画面を起動
 2. 画面上の実行ボタンをクリックして処理を実行
 
@@ -49,10 +50,10 @@ https://www.kingoftime.jp/
   https://gist.github.com/mignonstyle/083c9e1651d7734f84c99b8cf49d57fa
 - CUI、GUIのexe化は開発ディレクトリから、実行ファイルを指定して、pyinstallerでできた。下の記事を参考にする。
     - https://weblog.noanoachan.net/python-pyinstaller/
-    - 外部ファイルを参照するときは、下のコマンドで、フォルダを指定しないといけないらしい。
 * Mac OSも、できれば対応したいので、なんとかする。
 * バグ報告、機能追加要望はissueに記載ください。
 * 機能追加、改良あればお気軽にプルリクください。
+* GUIツールの画面の設定情報は頻繁に入力する内容でないため、折りたためるようにする。
  
 ## リリースノート
 ### 現在のバージョン

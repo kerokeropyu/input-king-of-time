@@ -1,1 +1,13 @@
+# Environment [virtual：venv]
 venv/
+
+# Environment [VisualStudioCode]
+.vscode/
+
+# Environment [Program]
+*.spec
+/__pycache__/
+gui/__pycache__/
+*.pyc
+gui/build/
+gui/dist/
