@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from webdriver_manager.chrome import ChromeDriverManager
-from gui.settings import Setting
+from settings import Setting
 
 # 設定をインスタンス化
 s = Setting()
